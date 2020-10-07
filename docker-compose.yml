@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  student-event-manager-front:
+    image: "student-event-manager-front"
+    container_name: student-event-manager-front
+    build: .
+    volumes:
+      - '.:/app'
+    ports:
+      - '80:80'
