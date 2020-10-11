@@ -11,6 +11,7 @@
     "docker-run": "docker run -it -v ${PWD}:/usr/src/app -v /usr/src/app/node_modules -p 8080:8080 student-event-manager-front"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-loader": "^15.9.3",
