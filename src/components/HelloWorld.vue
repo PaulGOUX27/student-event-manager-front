@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <div>{{ persons }}</div>
+    {{ url }}
   </div>
 </template>
 
@@ -18,6 +19,7 @@ export default {
     return {
       persons: [],
       service: new PersonService(),
+      url: process.env.VUE_APP_BACK_URL,
     };
   },
   mounted() {
