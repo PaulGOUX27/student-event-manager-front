@@ -1,16 +1,15 @@
 <template>
   <div>
-    Calendar
-    <HelloWorld/>
+    <Calendar/>
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue';
+import Calendar from '@/components/Calendar.vue';
 
 export default {
   components: {
-    HelloWorld,
+    Calendar,
   },
   name: 'CalendarView',
 };
