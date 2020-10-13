@@ -1,0 +1,35 @@
+.green-button {
+    background: #355935;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 26px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.05em;
+    height: 46px;
+    color: #FFFFFF;
+}
+
+.red-button {
+    background: #B72727;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 26px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.05em;
+    height: 46px;
+    color: #FFFFFF;
+}
+
+body{
+    background-color: #93BE89;
+}
