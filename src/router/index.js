@@ -1,32 +1,32 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Calendar from '@/views/Calendar.vue';
-import CreateEvent from '@/views/CreateEvent.vue';
-import EditEvent from '@/views/EditEvent.vue';
-import EventList from '@/views/EventList.vue';
+import CalendarView from '@/views/CalendarView.vue';
+import CreateEventView from '@/views/CreateEventView.vue';
+import EditEventView from '@/views/EditEventView.vue';
+import EventListView from '@/views/EventListView.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    name: 'Calendar',
-    component: Calendar,
+    name: 'calendar view',
+    component: CalendarView,
   },
   {
     path: '/new',
-    name: 'new event',
-    component: CreateEvent,
+    name: 'new event view',
+    component: CreateEventView,
   },
   {
     path: '/edit',
-    name: 'edit event',
-    component: EditEvent,
+    name: 'edit event view',
+    component: EditEventView,
   },
   {
     path: '/list',
-    name: 'event list',
-    component: EventList,
+    name: 'event list view',
+    component: EventListView,
   },
 ];
 
