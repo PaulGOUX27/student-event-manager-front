@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'CreateEvent',
+  name: 'CreateEventView',
 };
 </script>
 

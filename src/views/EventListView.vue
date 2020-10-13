@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'EventList',
+  name: 'EventListView',
 };
 </script>
 
