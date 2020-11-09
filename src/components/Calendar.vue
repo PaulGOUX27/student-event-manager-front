@@ -3,7 +3,7 @@
            :disable-views="['years', 'year', 'month', 'day']"
            :hide-view-selector="true"
            :time-from="0" :time-to="24 * 60" :time-step="60"
-           :events="events"
+           :events="eventsToCalendar"
   />
 </template>
 
@@ -15,24 +15,31 @@ export default {
   components: {
     VueCal,
   },
+  props: {
+    events: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+  },
   name: 'Calendar',
   data() {
     return {
-      events: [
-        {
-          start: '2020-10-12 16:00',
-          end: '2020-10-12 20:00',
-          title: 'Overall Adventure',
-          class: 'tik',
-        },
-        {
-          start: '2020-10-14 19:30',
-          end: '2020-10-14 21:00',
-          title: 'Sauna',
-          class: 'sauna',
-        },
-      ],
     };
+  },
+  computed: {
+    eventsToCalendar() {
+      console.log(this.events);
+      const events = [];
+      this.events.forEach((e) => events.push({
+        start: e.start_date,
+        end: e.end_date,
+        title: e.title,
+        class: 'tik',
+      }));
+      return events;
+    },
   },
 };
 </script>
