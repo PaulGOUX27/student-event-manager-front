@@ -20,16 +20,20 @@
       End date
       <input v-model="end_date" type="datetime-local">
     </label>
-
+    <div>
+      <EventCategorySelector v-model="eventCategories"/>
+    </div>
     <button @click="addEvent">Add event</button>
   </div>
 </template>
 
 <script>
 import EventService from '@/services/EventService';
+import EventCategorySelector from '@/components/EventCategorySelector.vue';
 
 export default {
   name: 'CreateEventView',
+  components: { EventCategorySelector },
   data() {
     return {
       start_date: '',
@@ -37,6 +41,7 @@ export default {
       title: '',
       description: '',
       place: '',
+      eventCategories: [],
     };
   },
   methods: {
@@ -47,6 +52,8 @@ export default {
         title: this.title,
         description: this.description,
         place: this.place,
+        // eslint-disable-next-line no-sequences
+        event_categories_ids: this.eventCategories.reduce((a, o) => (a.push(o.id), a), []),
       })
         .then((response) => console.log(response));
     },
@@ -54,6 +61,7 @@ export default {
 };
 </script>
 
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 
 </style>
