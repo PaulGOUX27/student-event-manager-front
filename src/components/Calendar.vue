@@ -30,7 +30,6 @@ export default {
   },
   computed: {
     eventsToCalendar() {
-      console.log(this.events);
       const events = [];
       this.events.forEach((e) => events.push({
         start: e.start_date.replace('T', ' '),
