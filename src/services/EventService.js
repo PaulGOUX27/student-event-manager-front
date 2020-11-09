@@ -5,6 +5,11 @@ class EventService {
     return SEMService.get('events')
       .then((response) => response.data);
   }
+
+  static createEvent(event) {
+    return SEMService.post('events', event)
+      .then((response) => response.data);
+  }
 }
 
 export default EventService;
