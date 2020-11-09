@@ -19,7 +19,7 @@ const routes = [
     component: CreateEventView,
   },
   {
-    path: '/edit',
+    path: '/edit/:event_id',
     name: 'edit event view',
     component: EditEventView,
   },

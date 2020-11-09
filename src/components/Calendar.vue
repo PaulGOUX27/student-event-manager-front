@@ -33,8 +33,8 @@ export default {
       console.log(this.events);
       const events = [];
       this.events.forEach((e) => events.push({
-        start: e.start_date,
-        end: e.end_date,
+        start: e.start_date.replace('T', ' '),
+        end: e.end_date.replace('T', ' '),
         title: e.title,
         class: 'tik',
       }));
