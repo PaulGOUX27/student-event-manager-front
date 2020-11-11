@@ -22,33 +22,29 @@
     </div>
 
     <div class="row">
-      <b-form-group id="start-date-input-group" label="Start date" label-for="start-date-input"
-                    class="col">
-        <b-form-input id="start-date-input" v-model="start_date" type="date" required
-                      placeholder="Enter start date">
-        </b-form-input>
-      </b-form-group>
+      <div class="col">
+        <label for="start-date-input">Start date</label>
+        <b-form-datepicker v-model="start_date" required id="start-date-input"
+                           placeholder="Enter start date" :state="validDate"/>
+      </div>
 
-      <b-form-group id="start-time-input-group" label="Start time" label-for="start-time-input"
-                    class="col">
-        <b-form-input id="start-time-input" v-model="start_time" type="time" required
-                      placeholder="Enter start time">
-        </b-form-input>
-      </b-form-group>
+      <div class="col">
+        <label for="start-time-input-group">Start date</label>
+        <b-form-timepicker v-model="start_time" required id="start-time-input-group"
+                           placeholder="Enter start time" :state="validDate"/>
+      </div>
 
-      <b-form-group id="end-date-input-group" label="End date" label-for="end-date-input"
-                    class="col">
-        <b-form-input id="end-date-input" v-model="end_date" type="date" required
-                      placeholder="Enter end date">
-        </b-form-input>
-      </b-form-group>
+      <div class="col">
+        <label for="end-date-input-group">Start date</label>
+        <b-form-datepicker v-model="end_date" required id="end-date-input-group"
+                           placeholder="Enter end date" :state="validDate"/>
+      </div>
 
-      <b-form-group id="end-time-input-group" label="End time" label-for="end-time-input"
-                    class="col">
-        <b-form-input id="end-time-input" v-model="end_time" type="time" required
-                      placeholder="Enter end time">
-        </b-form-input>
-      </b-form-group>
+      <div class="col">
+        <label for="end-time-input-group">Start date</label>
+        <b-form-timepicker v-model="end_time" required id="end-time-input-group"
+                           placeholder="Enter end time" :state="validDate"/>
+      </div>
     </div>
     <div class="row">
       <div class="col">
@@ -80,16 +76,27 @@ export default {
     return {
       start_date: '',
       end_date: '',
-      start_time: '',
-      end_time: '',
+      start_time: '00:00:00',
+      end_time: '00:00:00',
       title: '',
       description: '',
       place: '',
       eventCategories: [],
     };
   },
+  computed: {
+    validDate() {
+      // this.showRequireDate = false;
+      if (!this.start_date || !this.end_date) return false;
+      return new Date(`${this.start_date} ${this.start_time}`)
+        < new Date(`${this.end_date} ${this.end_time}`);
+    },
+  },
   methods: {
     addEvent() {
+      if (!this.validDate) {
+        return;
+      }
       EventService.createEvent({
         start_date: `${this.start_date} ${this.start_time}`,
         end_date: `${this.end_date} ${this.end_time}`,
