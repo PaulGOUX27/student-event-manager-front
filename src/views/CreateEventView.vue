@@ -1,5 +1,5 @@
 <template>
-  <b-form @submit="addEvent" class="container">
+  <b-form @submit="addEvent" @reset="cancel" class="container">
     <div class="row">
       <b-form-group id="title-input-group" label="Title" label-for="title-input" class="col">
         <b-form-input id="title-input" v-model="title" type="text" required
@@ -109,6 +109,9 @@ export default {
         .then(() => {
           this.$router.push('/');
         });
+    },
+    cancel() {
+      this.$router.push('/');
     },
   },
 };
