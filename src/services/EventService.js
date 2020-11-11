@@ -1,8 +1,8 @@
 import SEMService from '@/services/SEMService';
 
 class EventService {
-  static getAllEvents() {
-    return SEMService.get('events')
+  static getAllEvents(eventCategories = []) {
+    return SEMService.get('events', { params: { event_category_ids: eventCategories } })
       .then((response) => response.data);
   }
 

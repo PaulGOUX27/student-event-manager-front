@@ -10,6 +10,11 @@ class EventCategoryService {
     return SEMService.post('event-categories', eventCategory)
       .then((response) => response.data);
   }
+
+  static getOne(id) {
+    return SEMService.get(`event-categories/${id}`)
+      .then((response) => response.data);
+  }
 }
 
 export default EventCategoryService;
