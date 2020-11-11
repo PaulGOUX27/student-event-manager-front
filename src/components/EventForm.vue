@@ -62,6 +62,11 @@
         <b-button class="red-button button" type="reset">Cancel</b-button>
       </div>
     </div>
+    <div class="row" v-if="displayDelete">
+      <div class="col">
+        <b-button class="red-button" @click="remove">Delete event</b-button>
+      </div>
+    </div>
   </b-form>
 </template>
 
@@ -71,6 +76,16 @@ import EventCategorySelector from '@/components/EventCategorySelector.vue';
 export default {
   name: 'EventForm',
   components: { EventCategorySelector },
+  props: {
+    displayDelete: {
+      type: Boolean,
+      default: false,
+    },
+    event: {
+      type: Object,
+      default() { return {}; },
+    },
+  },
   data() {
     return {
       start_date: '',
@@ -82,6 +97,16 @@ export default {
       place: '',
       eventCategories: [],
     };
+  },
+  mounted() {
+    if (this.event) {
+      [this.start_date, this.start_time] = this.event.start_date.split('T');
+      [this.end_date, this.end_time] = this.event.end_date.split('T');
+      this.title = this.event.title;
+      this.description = this.event.description;
+      this.place = this.event.place;
+      this.eventCategories = this.event.event_categories;
+    }
   },
   computed: {
     validDate() {
@@ -104,6 +129,9 @@ export default {
     },
     cancel() {
       this.$emit('cancel');
+    },
+    remove() {
+      this.$emit('remove');
     },
   },
 };

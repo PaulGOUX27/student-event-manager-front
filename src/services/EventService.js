@@ -20,6 +20,11 @@ class EventService {
     return SEMService.put(`events/${event.id}`, event)
       .then((response) => response.data);
   }
+
+  static deleteEvent(id) {
+    return SEMService.delete(`events/${id}`)
+      .then((response) => response.data);
+  }
 }
 
 export default EventService;

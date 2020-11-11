@@ -1,6 +1,6 @@
 <template>
   <div>
-    <multiselect v-model="selectedEventCategories" :options="eventCategories"
+    <multiselect v-model="value" :options="eventCategories"
                  label="name" track-by="id" :allow-empty="true" :multiple="true"
                  :taggable="true" @tag="addEventCategory" @input="newEventCategory"/>
   </div>
@@ -15,10 +15,15 @@ export default {
   components: {
     Multiselect,
   },
+  props: {
+    value: {
+      type: Array,
+      default() { return []; },
+    },
+  },
   data() {
     return {
       eventCategories: [],
-      selectedEventCategories: [],
     };
   },
   mounted() {
@@ -31,11 +36,11 @@ export default {
         .then((response) => {
           const newEventCategory = response.result;
           this.eventCategories.push(newEventCategory);
-          this.selectedEventCategories.push(newEventCategory);
+          this.value.push(newEventCategory);
         });
     },
     newEventCategory() {
-      this.$emit('input', this.selectedEventCategories);
+      this.$emit('input', this.value);
     },
   },
 };
