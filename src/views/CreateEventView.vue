@@ -1,5 +1,5 @@
 <template>
-  <EventForm @submit="addEvent" @cancel="cancel"/>
+  <EventForm @submit="addEvent" @cancel="cancel" title-form="Create New Event"/>
 </template>
 
 <script>

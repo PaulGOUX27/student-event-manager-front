@@ -1,15 +1,13 @@
 <template>
   <div class="header">
-    <router-link to="/">
-      <div>Student Event Manager</div>
-    </router-link>
+    <h1 @click="$router.push('/')" class="hover-pointer">Student Event Manager</h1>
     <div class="buttons">
-      <router-link to="/new">
-        <button class="green-button new-event-button">New event</button>
-      </router-link>
-      <router-link to="/list">
-        <button class="green-button manage-event-button">Manage events</button>
-      </router-link>
+      <button class="green-button new-event-button" @click="$router.push('/new')">
+        New event
+      </button>
+      <button class="green-button manage-event-button" @click="$router.push('/list')">
+        Manage events
+      </button>
     </div>
   </div>
 </template>
@@ -24,10 +22,12 @@ export default {
 .header {
   display: flex;
   justify-content: space-between;
+  margin: 20px;
 }
 
 .buttons {
   display: flex;
+  justify-content: space-between
 }
 
 .new-event-button {

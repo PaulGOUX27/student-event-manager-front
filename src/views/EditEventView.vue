@@ -1,8 +1,7 @@
 <template>
   <div>
-    Edit event
     <EventForm @submit="updateEvent" @cancel="cancel" :display-delete="true" @remove="remove"
-               :event="e" :key="isFetching + 'cheat'"/>
+               :event="e" :key="isFetching + 'cheat'" title-form="Edit Event"/>
   </div>
 </template>
 

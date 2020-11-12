@@ -1,5 +1,6 @@
 <template>
   <b-form @submit="submit" @reset="cancel" class="container">
+    <h2>{{titleForm}}</h2>
     <div class="row">
       <b-form-group id="title-input-group" label="Title" label-for="title-input" class="col">
         <b-form-input id="title-input" v-model="title" type="text" required
@@ -85,6 +86,10 @@ export default {
     event: {
       type: Object,
       default() { return undefined; },
+    },
+    titleForm: {
+      type: String,
+      default: '',
     },
   },
   data() {

@@ -12,9 +12,9 @@
           {{e.start_date}}
         </div>
       </div>
-      <router-link :to="`/edit/${e.id}`" tag="button" class="green-button">
+      <b-button @click="$router.push(`/edit/${e.id}`)" class="green-button">
         Edit
-      </router-link>
+      </b-button>
     </div>
   </div>
 </template>
@@ -45,6 +45,10 @@ export default {
   width: 800px;
   margin-bottom: 15px;
   align-items: center;
+}
+
+.green-button{
+  width: 200px;
 }
 
 .event-info{
