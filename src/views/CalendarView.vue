@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <EventCategorySelector v-model="eventCategories" class="event-category-selector"
-                           @input="refresh"/>
+                           @input="refresh" :taggable="false"/>
     <Calendar :events="events"/>
   </div>
 </template>

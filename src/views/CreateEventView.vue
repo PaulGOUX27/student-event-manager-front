@@ -20,7 +20,6 @@ export default {
         < new Date(event.end_date);
     },
     addEvent(event) {
-      console.log(event);
       if (!this.validDate(event)) {
         return;
       }

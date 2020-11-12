@@ -17,7 +17,8 @@
     <div class="row categories">
       <div class="col">
         <label for="categories-input">Categories</label>
-        <EventCategorySelector id="categories-input" v-model="eventCategories"/>
+        <EventCategorySelector id="categories-input" v-model="eventCategories"
+                               :key="eventCategories.length"/>
       </div>
     </div>
 
@@ -83,7 +84,7 @@ export default {
     },
     event: {
       type: Object,
-      default() { return {}; },
+      default() { return undefined; },
     },
   },
   data() {
@@ -99,7 +100,7 @@ export default {
     };
   },
   mounted() {
-    if (this.event) {
+    if (this.event && this.event.start_date) {
       [this.start_date, this.start_time] = this.event.start_date.split('T');
       [this.end_date, this.end_time] = this.event.end_date.split('T');
       this.title = this.event.title;

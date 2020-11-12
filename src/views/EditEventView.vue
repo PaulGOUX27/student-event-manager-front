@@ -2,7 +2,7 @@
   <div>
     Edit event
     <EventForm @submit="updateEvent" @cancel="cancel" :display-delete="true" @remove="remove"
-               :event="e" v-if="!isFetching"/>
+               :event="e" :key="isFetching + 'cheat'"/>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
     };
   },
   mounted() {
-    EventService.getOne(this.$route.params.event_id)
+    return EventService.getOne(this.$route.params.event_id)
       .then((response) => {
         this.isFetching = false;
         this.e = response.result;

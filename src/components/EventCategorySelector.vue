@@ -1,8 +1,8 @@
 <template>
   <div>
-    <multiselect v-model="selectedEventCategories" :options="eventCategories"
+    <multiselect v-model="selectedEventCategories" :options="allEventCategories"
                  label="name" track-by="id" :allow-empty="true" :multiple="true"
-                 :taggable="true" @tag="addEventCategory" @input="newEventCategory"/>
+                 :taggable="taggable" @tag="addEventCategory" @input="newEventCategory"/>
   </div>
 </template>
 
@@ -19,24 +19,28 @@ export default {
     value: {
       type: Array,
     },
+    taggable: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
-      eventCategories: [],
+      allEventCategories: [],
       selectedEventCategories: [],
     };
   },
   mounted() {
     this.selectedEventCategories = this.value || [];
     EventCategoryService.getAll()
-      .then((response) => { this.eventCategories = response.result['event-categories']; });
+      .then((response) => { this.allEventCategories = response.result['event-categories']; });
   },
   methods: {
     addEventCategory(name) {
       EventCategoryService.create({ name })
         .then((response) => {
           const newEventCategory = response.result;
-          this.eventCategories.push(newEventCategory);
+          this.allEventCategories.push(newEventCategory);
           this.selectedEventCategories.push(newEventCategory);
         });
     },
