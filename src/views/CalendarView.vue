@@ -3,6 +3,15 @@
     <EventCategorySelector v-model="eventCategories" class="event-category-selector"
                            @input="refresh" :taggable="false"/>
     <Calendar :events="events"/>
+    <div>
+      <div style="padding-top: 15px">
+        Export link for selected events. You can enter this link in other calendar application to
+        synchronize them with the Student Event Manager.
+      </div>
+      <pre style="padding-top: 15px">
+        {{calendarPath()}}
+      </pre>
+    </div>
   </div>
 </template>
 
@@ -42,6 +51,9 @@ export default {
         .then((events) => {
           this.events = events.result.events;
         });
+    },
+    calendarPath() {
+      return `https://student-event-manager-back.herokuapp.com/calendar${this.$router.currentRoute.fullPath.substring(1)}`;
     },
   },
   async mounted() {
